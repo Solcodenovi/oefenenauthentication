@@ -1,25 +1,64 @@
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
+import React from "react";
+// import './App.css';
+import Home from "./Pages/Home";
+import Register from "./Pages/Register";
+import Login from "./Pages/Login";
+import Account from "./Pages/Account";
+
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <Router>
+        <div>
+          <nav>
+            <ul>
+              <li>
+                <Link to="/">Home</Link>
+              </li>
+              <li>
+                <Link to="/Register">Register</Link>
+              </li>
+              <li>
+                <Link to="/Login">Log in</Link>
+              </li>
+              <li>
+                <Link to="/Account">Account</Link>
+              </li>
+            </ul>
+          </nav>
+
+
+          <Switch>
+            <Route exact path="/">
+              <Home/>
+            </Route>
+               <Route path="/Register">
+                 <Register/>
+               </Route>
+            <Route path="/Login">
+              <Login/>
+            </Route>
+            <Route path="/Account">
+              <Account/>
+            </Route>
+              <Route path="/">
+                <h1>Error 404 not found.</h1>
+            </Route>
+          </Switch>
+        </div>
+      </Router>
   );
 }
 
-export default App;
+
+
+
+
+
