@@ -1,0 +1,21 @@
+label,input{
+    display:block;
+    margin:50px;
+
+}
+.registerContainer{
+
+    background: linear-gradient(0deg, rgba(146,169,215,1) 0%, rgba(203,112,170,0.6671043417366946) 51%, rgba(112,195,203,0.6671043417366946) 91%);
+    color:white;
+    box-shadow: -5px -5px 30px 5px rgba(17,10,95,0.98), 5px 5px 30px 5px rgba(95,25,23,0.98);
+    border-radius: 25px;
+    height: 400px;
+    width: 400px;
+    padding: 50px;
+
+}
+
+
+body{
+    background-color: rgba(183,229,255,0.98);
+}

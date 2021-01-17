@@ -1,8 +1,13 @@
 import React from "react";
+import Index from "../Components/RegisterForm";
 
 
 export default function Register(){
 
 
-    return<h2>Register</h2>;
+    return <div>
+    <h2>Register</h2>
+        <Index/>
+    </div>;
+
 }
