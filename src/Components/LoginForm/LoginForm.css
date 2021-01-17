@@ -1,6 +1,6 @@
 label,input{
     display:block;
-    margin:50px;
+    margin:20px;
 
 }
 .loginContainer{
@@ -12,6 +12,7 @@ label,input{
     height: 400px;
     width: 400px;
     padding: 50px;
+    overflow: hidden;
 
 }
 

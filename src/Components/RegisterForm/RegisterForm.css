@@ -12,6 +12,7 @@ label,input{
     height: 400px;
     width: 400px;
     padding: 50px;
+    overflow: hidden;
 
 }
 

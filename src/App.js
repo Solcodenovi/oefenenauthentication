@@ -5,7 +5,7 @@ import Home from "./Pages/Home";
 import Register from "./Pages/Register";
 import Login from "./Pages/Login";
 import Account from "./Pages/Account";
-
+import HomeBackground from "./Components/Home";
 
 import {
   BrowserRouter as Router,
@@ -19,6 +19,7 @@ export default function App() {
       <Router>
         <div>
           <nav>
+            <HomeBackground/>
             <ul>
               <li>
                 <Link to="/">Home</Link>
