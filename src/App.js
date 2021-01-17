@@ -6,6 +6,7 @@ import Register from "./Pages/Register";
 import Login from "./Pages/Login";
 import Account from "./Pages/Account";
 
+
 import {
   BrowserRouter as Router,
   Switch,
