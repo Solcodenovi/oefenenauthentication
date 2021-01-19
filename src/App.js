@@ -7,8 +7,9 @@ import Login from "./Pages/Login";
 import Account from "./Pages/Account";
 import HomeBackground from "./Components/Home";
 
+
 import {
-  BrowserRouter as Router,
+
   Switch,
   Route,
   Link
@@ -16,7 +17,7 @@ import {
 
 export default function App() {
   return (
-      <Router>
+
         <div>
           <nav>
             <HomeBackground/>
@@ -55,7 +56,7 @@ export default function App() {
             </Route>
           </Switch>
         </div>
-      </Router>
+
   );
 }
 
