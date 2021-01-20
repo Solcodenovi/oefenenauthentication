@@ -42,6 +42,12 @@ function AuthContextProvider({ children }) {
 
     function logout() {
         // doe dingen
+        localStorage.clear();
+        setAuthState({
+            ...authState,
+            user:null,
+
+        })
     }
 
     // const providerData = {
