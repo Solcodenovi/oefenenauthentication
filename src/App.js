@@ -4,7 +4,7 @@ import React from "react";
 import Home from "./Pages/Home";
 import Register from "./Pages/Register";
 import Login from "./Pages/Login";
-import Account from "./Pages/Account";
+import Account from "./Components/Pages/Account";
 import HomeBackground from "./Components/Home";
 
 
