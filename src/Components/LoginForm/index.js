@@ -8,9 +8,13 @@ import {Link, useHistory} from 'react-router-dom';
 import{useEffect, useContext} from 'react';
 
 
-
+//
 
 export default function LoginForm(){
+
+    const {login} = useContext(AuthContext);
+    const {isAuthenticated} = useAuthState();
+
     const {register,handleSubmit,errors} =useForm();
 
     async function onSubmit (data) {
@@ -20,15 +24,17 @@ export default function LoginForm(){
                 {
                     username: data.username,
                     password: data.password,
+
                 }
             )
-            console.log("Wat ontvang ik", response);
+            login(response.data);
         } catch (error){
         }
     }
+
+
+
     // context-functies
-    const { login } = useContext(AuthContext);
-    const { isAuthenticated } = useAuthState();
 
 
     // react-router dingen
@@ -38,8 +44,10 @@ export default function LoginForm(){
     useEffect(() => {
         // als hij de waarde true heeft, DAN sturen we de gebruiker door!
         if (isAuthenticated === true) {
-            history.push('/profile');
+            history.push('/Account');
         }
+
+        console.log(isAuthenticated);
     }, [isAuthenticated]);
 
 
@@ -55,6 +63,11 @@ export default function LoginForm(){
         <input name="password" type="password" ref={register({required : true})}/>
         {errors.password && errors.password.type === "required" &&
         (<p><IoWarningOutline/> Password is required!</p>)}
+
+        {/*<label htmlFor='email'>Email</label>*/}
+        {/*<input name="email" type="email" ref={register({required : true})}/>*/}
+        {/*{errors.email && errors.email.type === "required" &&*/}
+        {/*(<p><IoWarningOutline/> Email is required!</p>)}*/}
         <input type="submit"/>
         <p>Heb je nog geen account? <Link to="/Register">Registreer</Link> je dan eerst.</p>
         </form>;
