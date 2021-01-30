@@ -8,34 +8,18 @@ import {Link, useHistory} from 'react-router-dom';
 import{useEffect, useContext} from 'react';
 
 
-//
 
-export default function LoginForm(){
+export default function LoginForm() {
 
     const {login} = useContext(AuthContext);
     const {isAuthenticated} = useAuthState();
 
-    const {register,handleSubmit,errors} =useForm();
-
-    async function onSubmit (data) {
-        console.log("Wat is er ingevuld", data);
-        try {
-            const response = await axios.post(`https://polar-lake-14365.herokuapp.com/api/auth/signin`,
-                {
-                    username: data.username,
-                    password: data.password,
-
-                }
-            )
-            login(response.data);
-        } catch (error){
-        }
-    }
+    const {register, handleSubmit, errors} = useForm();
 
 
+    // state voor gebruikersfeedback
 
-    // context-functies
-
+    // const [error, setError] = useState('');
 
     // react-router dingen
     const history = useHistory();
@@ -46,21 +30,39 @@ export default function LoginForm(){
         if (isAuthenticated === true) {
             history.push('/Account');
         }
-
-        console.log(isAuthenticated);
     }, [isAuthenticated]);
 
+
+    async function onSubmit(data) {
+
+        // setError('');
+        console.log("Wat is er ingevuld", data);
+        try {
+            const response = await axios.post(`https://polar-lake-14365.herokuapp.com/api/auth/signin`,
+                {
+                    username: data.username,
+                    password: data.password,
+
+                }
+            )
+            login(response.data);
+        } catch (e) {
+            // console.error(error);
+            // setError("inloggen mislukt");
+        }
+
+    }
 
 
     return <form className="loginContainer" onSubmit={handleSubmit(onSubmit)}>
 
         <label htmlFor='username'>Username</label>
-        <input name="username" type="text" ref={register({required : true})}/>
+        <input name="username" type="text" ref={register({required: true})}/>
         {errors.username && errors.username.type === "required" &&
         (<p><IoWarningOutline/> This field is required!</p>)}
 
         <label htmlFor='password'>Password</label>
-        <input name="password" type="password" ref={register({required : true})}/>
+        <input name="password" type="password" ref={register({required: true})}/>
         {errors.password && errors.password.type === "required" &&
         (<p><IoWarningOutline/> Password is required!</p>)}
 
@@ -69,6 +71,13 @@ export default function LoginForm(){
         {/*{errors.email && errors.email.type === "required" &&*/}
         {/*(<p><IoWarningOutline/> Email is required!</p>)}*/}
         <input type="submit"/>
-        <p>Heb je nog geen account? <Link to="/Register">Registreer</Link> je dan eerst.</p>
-        </form>;
+
+            {/*<p>{error && <p>{error}</p>} </p>*/}
+            <p>Heb je nog geen account? <Link to="/Register">Registreer</Link> je dan eerst.</p>
+
+
+    </form>
+
+
+
 }
